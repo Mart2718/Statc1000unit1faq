@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT C1000 · Unit 1 Student FAQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1b2d5e; --navy-deep: #0f1c3f; --navy-mid: #243470;
+    --gold: #d4960c; --gold-light: #f0b429; --gold-pale: #fef3d8;
+    --coral: #c95a3e; --coral-pale: #fdf0ec;
+    --teal: #1a7a6e; --teal-pale: #e8f5f3;
+    --purple: #534AB7; --purple-pale: #EEEDFE;
+    --cream: #fdfaf4; --parchment: #f5ede0;
+    --border: #e8d9c5; --text: #221c16; --muted: #6b5d52; --white: #ffffff;
+    --radius: 14px; --radius-sm: 8px;
+    --shadow-card: 0 4px 24px rgba(27,45,94,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.7; }
+
+  .site-header { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 60%, var(--navy-mid) 100%); padding: 0; position: relative; overflow: hidden; }
+  .header-deco { position: absolute; top: 0; right: 0; bottom: 0; width: 45%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Ccircle cx='350' cy='40' r='180' fill='rgba(244,180,42,0.06)'/%3E%3Ccircle cx='250' cy='240' r='120' fill='rgba(244,180,42,0.04)'/%3E%3C/svg%3E") no-repeat center; background-size: cover; pointer-events: none; }
+  .header-inner { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem 2rem; }
+  .badge-sac { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,150,12,0.18); border: 1px solid rgba(240,180,41,0.4); border-radius: 100px; padding: 5px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 1rem; }
+  .badge-sac::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); display: inline-block; }
+  .header-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 0.5rem; }
+  .header-title em { font-style: italic; color: var(--gold-light); }
+  .header-sub { font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 300; margin-bottom: 1.5rem; }
+  .hope-strip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm); padding: 0.9rem 1.2rem; display: flex; align-items: flex-start; gap: 12px; }
+  .hope-icon { font-size: 20px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .hope-text { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 400; line-height: 1.6; }
+  .hope-text strong { color: var(--gold-light); font-weight: 600; }
+
+  .stats-bar { background: var(--parchment); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; }
+  .stats-bar-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .stat-pill { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .stat-pill strong { color: var(--navy); font-weight: 600; }
+
+  .controls { max-width: 960px; margin: 0 auto; padding: 1.5rem 2rem 0.5rem; }
+  .search-wrap { position: relative; margin-bottom: 1.25rem; }
+  .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+  #searchInput { width: 100%; padding: 12px 16px 12px 44px; border: 1.5px solid var(--border); border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 15px; background: var(--white); color: var(--text); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  #searchInput:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,45,94,0.1); }
+  #searchInput::placeholder { color: #b0a498; }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .filter-btn { padding: 7px 16px; border-radius: 100px; border: 1.5px solid var(--border); background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 7px; }
+  .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .filter-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .filter-btn .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 1rem 2rem 3rem; }
+
+  .section-header { display: flex; align-items: center; gap: 14px; margin: 2rem 0 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+  .section-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); }
+  .section-count { margin-left: auto; font-size: 12px; color: var(--muted); background: var(--parchment); border: 1px solid var(--border); border-radius: 100px; padding: 3px 10px; font-weight: 500; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+  .faq-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
+  .faq-card:hover { border-color: #c9b9a0; box-shadow: var(--shadow-card); }
+  .faq-card.open { border-color: var(--navy); }
+  .faq-trigger { display: flex; align-items: flex-start; gap: 14px; padding: 1.1rem 1.3rem; cursor: pointer; background: none; border: none; width: 100%; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.5; }
+  .q-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--parchment); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--gold); flex-shrink: 0; margin-top: 1px; border: 1.5px solid var(--border); font-family: 'Playfair Display', serif; }
+  .faq-card.open .q-icon { background: var(--navy); border-color: var(--navy); color: var(--gold-light); }
+  .faq-q { flex: 1; }
+  .chevron { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; transition: transform 0.25s; color: var(--muted); }
+  .faq-card.open .chevron { transform: rotate(180deg); color: var(--navy); }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+  .tag { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 100px; border: 1px solid; }
+  .tag.s-tag { background: #eef2ff; color: #3b55b0; border-color: #c7d0f5; }
+  .faq-body { overflow: hidden; max-height: 0; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .faq-body-inner { padding: 0 1.3rem 1.3rem 3.8rem; border-top: 1px solid var(--border); }
+  .answer-head { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .answer-text { font-size: 14.5px; line-height: 1.75; color: #3a2e28; }
+  .answer-text p { margin-bottom: 0.6rem; }
+  .answer-text p:last-child { margin-bottom: 0; }
+  .answer-text strong { color: var(--navy); font-weight: 600; }
+  .answer-text em { color: var(--coral); font-style: normal; font-weight: 600; }
+  .tip-box { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 0.7rem 0.9rem; margin-top: 0.75rem; font-size: 13.5px; line-height: 1.65; color: #3d2e10; }
+  .tip-box b { color: #7a4e05; }
+  .rule-box { background: var(--coral-pale); border-left: 3px solid var(--coral); padding: 0.7rem 0.9rem; margin-top: 0.75rem; font-size: 13.5px; line-height: 1.65; color: #4a1f13; font-weight: 500; }
+  .rule-box b { color: var(--coral); }
+  .info-box { background: var(--teal-pale); border-left: 3px solid var(--teal); padding: 0.7rem 0.9rem; margin-top: 0.75rem; font-size: 13.5px; line-height: 1.65; color: #0b3d37; }
+  .info-box b { color: var(--teal); }
+  .mistake-box { background: var(--purple-pale); border-left: 3px solid var(--purple); padding: 0.7rem 0.9rem; margin-top: 0.75rem; font-size: 13.5px; line-height: 1.65; color: #26215C; }
+  .mistake-box b { color: var(--purple); }
+
+  .decision-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 13px; }
+  .decision-table caption { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0 0 6px; }
+  .decision-table th { background: var(--navy); color: rgba(255,255,255,0.9); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; }
+  .decision-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .decision-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .decision-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+  .decision-table tr:last-child td { border-bottom: none; }
+  .decision-table tr:nth-child(even) td { background: var(--parchment); }
+  .test-badge { display: inline-block; background: var(--navy); color: var(--gold-light); border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; }
+
+  /* DECISION TREE */
+  #decisionTree { background: var(--white); border: 2px solid var(--navy); border-radius: var(--radius); overflow: hidden; margin-bottom: 0.5rem; }
+  .tree-header { background: var(--navy); padding: 1rem 1.3rem; }
+  .tree-header-text h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .tree-header-text p { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+  .tree-body { padding: 1.3rem; }
+  .tree-breadcrumb { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; min-height: 26px; }
+  .crumb { font-size: 11px; background: var(--parchment); border: 1px solid var(--border); border-radius: 100px; padding: 3px 10px; color: var(--muted); font-weight: 500; display: flex; align-items: center; gap: 5px; }
+  .crumb::after { content: '›'; color: #b0a498; margin-left: 5px; }
+  .crumb:last-child::after { display: none; }
+  .tree-question { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--navy); margin-bottom: 0.35rem; }
+  .tree-context { font-size: 13.5px; color: var(--muted); margin-bottom: 1rem; font-style: italic; }
+  .tree-options { display: flex; flex-direction: column; gap: 8px; }
+  .tree-option { display: flex; flex-direction: column; padding: 0.9rem 1.1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.18s; background: var(--cream); text-align: left; font-family: 'DM Sans', sans-serif; }
+  .tree-option:hover { border-color: var(--navy); background: var(--white); box-shadow: 0 2px 12px rgba(27,45,94,0.08); }
+  .tree-option-label { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .tree-option-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .tree-result { padding: 1.1rem 1.3rem; background: linear-gradient(135deg, #0f1c3f 0%, #1b2d5e 100%); border-radius: var(--radius-sm); margin-top: 0.5rem; }
+  .result-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem; }
+  .result-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+  .result-symbol { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.0rem; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; }
+  .result-hyp { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 0.8rem; line-height: 1.6; }
+  .result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .result-btn { padding: 8px 16px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.18s; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+  .result-btn.primary { background: var(--gold); color: #1a0f00; }
+  .result-btn.primary:hover { background: var(--gold-light); }
+  .result-btn.secondary { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.25); }
+  .result-btn.secondary:hover { background: rgba(255,255,255,0.2); }
+  .tree-restart { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .restart-btn { background: none; border: 1.5px solid var(--border); border-radius: 100px; padding: 6px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); cursor: pointer; transition: all 0.18s; font-weight: 500; }
+  .restart-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .tree-step-indicator { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  /* INTERACTIVE APPS */
+  .apps-section { background: var(--white); border: 2px solid var(--teal); border-radius: var(--radius); overflow: hidden; margin-bottom: 0.5rem; }
+  .apps-header { background: linear-gradient(135deg, var(--teal) 0%, #0f6355 100%); padding: 1rem 1.3rem; }
+  .apps-header h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .apps-header p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .apps-body { padding: 1rem 1.3rem 1.3rem; }
+  .apps-category-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1rem 0 0.5rem; border-left: 3px solid var(--teal); padding-left: 8px; }
+  .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .app-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.8rem; background: var(--cream); transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s; text-decoration: none; display: flex; flex-direction: column; gap: 4px; }
+  .app-card:hover { border-color: var(--teal); box-shadow: 0 3px 14px rgba(26,122,110,0.12); transform: translateY(-1px); }
+  .app-cat-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 100px; background: var(--teal-pale); color: var(--teal); border: 1px solid #b3ddd7; width: fit-content; }
+  .app-name { font-weight: 600; font-size: 13px; color: var(--navy); line-height: 1.3; }
+  .app-desc { font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+  .app-launch { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: var(--teal); margin-top: 4px; letter-spacing: 0.02em; }
+  .app-launch::after { content: '→'; }
+  .try-app-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-pale); border: 1.5px solid #b3ddd7; border-radius: var(--radius-sm); padding: 6px 12px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 600; color: var(--teal); text-decoration: none; transition: all 0.18s; margin-top: 0.75rem; }
+  .try-app-btn:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+  .try-app-btn::before { content: '🚀'; font-size: 13px; }
+
+  /* ART OF STAT */
+  .artofstat-section { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 2.5rem; }
+  .artofstat-header { background: #1a7a6e; padding: 1rem 1.3rem; }
+  .artofstat-header h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); }
+  .artofstat-header p { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .artofstat-intro { padding: 1rem 1.3rem 0.5rem; font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .artofstat-intro a { color: var(--teal); font-weight: 600; text-decoration: none; }
+  .artofstat-intro a:hover { text-decoration: underline; }
+  .artofstat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; padding: 1rem 1.3rem 1.3rem; }
+  .aos-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem; background: var(--cream); transition: border-color 0.18s, box-shadow 0.18s; }
+  .aos-card:hover { border-color: var(--teal); box-shadow: 0 2px 12px rgba(26,122,110,0.08); }
+  .aos-test-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 6px; }
+  .aos-test-badge.quant { background: var(--teal-pale); color: var(--teal); border: 1px solid #b3ddd7; }
+  .aos-test-badge.cat { background: var(--gold-pale); color: #7a4e05; border: 1px solid #f0b429; }
+  .aos-test-badge.dist { background: var(--purple-pale); color: var(--purple); border: 1px solid #c0bce8; }
+  .aos-name { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+  .aos-where { font-size: 12px; color: var(--muted); margin-bottom: 6px; line-height: 1.4; }
+  .aos-note { font-size: 11.5px; color: var(--coral); font-weight: 600; margin-bottom: 8px; background: var(--coral-pale); padding: 3px 7px; border-radius: 4px; display: inline-block; }
+  .aos-video-btn { display: inline-flex; align-items: center; gap: 5px; background: var(--teal); color: var(--white); border: none; border-radius: 100px; padding: 5px 12px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.18s; margin-top: 4px; margin-right: 4px; }
+  .aos-video-btn:hover { background: #0f6e56; }
+  .aos-video-icon { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .faq-item.hidden { display: none; }
+  .section-group.hidden { display: none; }
+  #noResults { text-align: center; padding: 3rem 1rem; display: none; }
+  #noResults p { font-size: 15px; color: var(--muted); }
+  #noResults strong { color: var(--navy); }
+  .math { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1em; color: var(--navy); }
+  footer { background: var(--navy-deep); padding: 1.5rem 2rem; text-align: center; }
+  .footer-inner { max-width: 960px; margin: 0 auto; }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.45); }
+  footer strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+  @media (max-width: 600px) {
+    .header-inner, main, .controls { padding-left: 1rem; padding-right: 1rem; }
+    .stats-bar-inner { gap: 1rem; }
+    .faq-body-inner { padding-left: 1rem; }
+    .artofstat-grid, .apps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-deco"></div>
+  <div class="header-inner">
+    <div class="badge-sac">SAC Hope Academy · STAT C1000</div>
+    <h1 class="header-title">Unit 1 <em>Student FAQ</em></h1>
+    <p class="header-sub">Understanding Data · Descriptive Statistics · Z-Scores</p>
+    <div class="hope-strip">
+      <div class="hope-icon">✦</div>
+      <div class="hope-text"><strong>These questions came from your classmates.</strong> Every confusion you feel right now is shared by someone sitting next to you. That is not weakness — that is the beginning of learning. Use this resource as your study companion. You belong here.</div>
+    </div>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-pill">📋 <strong>24</strong> frequently asked questions</div>
+    <div class="stat-pill">🚀 <strong>9</strong> interactive practice apps</div>
+    <div class="stat-pill">🗺️ Interactive <strong>summary guide</strong></div>
+    <div class="stat-pill">🏅 Covers <strong>S1 – S7</strong></div>
+    <div class="stat-pill">🤝 Built from <strong>real student questions</strong></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <input type="text" id="searchInput" placeholder="Search questions… (e.g., z-score, median, skewed, parameter, boxplot)">
+  </div>
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterCat(this,'all')"><span class="dot" style="background:#1b2d5e"></span>All Topics</button>
+    <button class="filter-btn" onclick="filterCat(this,'study')"><span class="dot" style="background:#d4960c"></span>Studies, Variables &amp; Sampling (S1–S3)</button>
+    <button class="filter-btn" onclick="filterCat(this,'graphs')"><span class="dot" style="background:#1a7a6e"></span>Graphs &amp; Displays (S4–S5)</button>
+    <button class="filter-btn" onclick="filterCat(this,'center')"><span class="dot" style="background:#c95a3e"></span>Center, Spread &amp; Shape (S6)</button>
+    <button class="filter-btn" onclick="filterCat(this,'zscore')"><span class="dot" style="background:#534AB7"></span>Z-Scores (S7)</button>
+  </div>
+</div>
+
+<main id="mainContent">
+
+  <!-- ─── DECISION TREE ─── -->
+  <div id="decisionTree">
+    <div class="tree-header">
+      <div class="tree-header-text">
+        <h3>🗺️ Which summary should I report? — Interactive guide</h3>
+        <p>Answer 2–3 questions and get the right graph + numerical summary every time.</p>
+      </div>
+    </div>
+    <div class="tree-body">
+      <div class="tree-breadcrumb" id="breadcrumb" role="navigation" aria-label="Decision path"></div>
+      <div id="treeContent"></div>
+    </div>
+  </div>
+
+  <!-- ─── INTERACTIVE APPS ─── -->
+  <div class="apps-section">
+    <div class="apps-header">
+      <h3>🚀 Interactive Practice Apps — Unit 1</h3>
+      <p>Built for STAT C1000 · Click any card to launch in a new tab</p>
+    </div>
+    <div class="apps-body">
+
+      <p class="apps-category-label">📋 Statistical Thinking &amp; Study Design</p>
+      <div class="apps-grid">
+        <a class="app-card" href="https://sacstatsc1000statisticparameter.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S1 · Concept</span>
+          <span class="app-name">Statistic vs. Parameter</span>
+          <span class="app-desc">Practice distinguishing population parameters from sample statistics — the foundational S1 distinction that shows up on every exam.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+        <a class="app-card" href="https://statsquestions.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S1 · Reasoning</span>
+          <span class="app-name">StatsQuestions</span>
+          <span class="app-desc">Learn to distinguish statistical questions from deterministic facts — builds the foundational reasoning that underpins all of Unit 1.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+        <a class="app-card" href="https://sacstatthink.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">Conceptual</span>
+          <span class="app-name">SAC StatThink</span>
+          <span class="app-desc">41 thought-provoking prompts organized by SLO — includes S1–S7 prompts. Jot your thinking before revealing the expert response.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+      </div>
+
+      <p class="apps-category-label">📊 Graphs &amp; Frequency Distributions</p>
+      <div class="apps-grid">
+        <a class="app-card" href="https://frequencydistributionexplorer.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S4 · Visualization</span>
+          <span class="app-name">Relative &amp; Cumulative Frequency Explorer</span>
+          <span class="app-desc">Adjust datasets and watch frequency, relative frequency, and cumulative relative frequency tables update in real time — solves the most common S4 confusion.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+        <a class="app-card" href="https://exploratorystatisticsactivity.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S5/S6 · Exploration</span>
+          <span class="app-name">Exploratory Statistics Activity</span>
+          <span class="app-desc">Investigate real data with histograms, boxplots, and dotplots — deepens intuition for shape, center, spread, and unusual features simultaneously.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+      </div>
+
+      <p class="apps-category-label">📐 Center, Spread &amp; Z-Scores</p>
+      <div class="apps-grid">
+        <a class="app-card" href="https://percentileexplorer.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S6 · Visualization</span>
+          <span class="app-name">Percentile Explorer</span>
+          <span class="app-desc">Interactively calculate and visualize percentiles and quartiles — builds the intuition behind "at or below" that trips up so many students on exams.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+        <a class="app-card" href="https://zscoreexplorer.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">S7 · Visualization</span>
+          <span class="app-name">Z-Score Explorer</span>
+          <span class="app-desc">Manipulate values in real time and see how z-scores map to areas under the normal curve — connects the formula to percentiles and the "unusual" rule visually.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+      </div>
+
+      <p class="apps-category-label">📝 Review</p>
+      <div class="apps-grid">
+        <a class="app-card" href="https://sacstatc1000finalconceptreview.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">Review</span>
+          <span class="app-name">Final Exam Concept Practice</span>
+          <span class="app-desc">19 concept-level problems that span the whole course — Unit 1 concepts (center, spread, z-scores) appear throughout.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+        <a class="app-card" href="https://sacstatc1000finalskillsreview.netlify.app/" target="_blank" rel="noopener">
+          <span class="app-cat-badge">Review</span>
+          <span class="app-name">Final Exam Skills Practice</span>
+          <span class="app-desc">71 comprehensive problems — includes descriptive statistics, shape interpretation, and z-score calculations from Unit 1.</span>
+          <span class="app-launch">Launch App</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1: STUDIES, VARIABLES & SAMPLING
+  ═══════════════════════════════════════ -->
+  <section class="section-group" data-cat="study">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fef3d8;">🔬</div>
+      <h2 class="section-title">Statistical Studies, Variables &amp; Sampling</h2>
+      <span class="section-count">S1 · S2 · S3 · 7 questions</span>
+    </div>
+    <div class="faq-list">
+
+      <!-- Q1: Parameter vs Statistic -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="parameter statistic difference population sample mixed up tell apart greek letter mu sigma p hat">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">I keep mixing up parameter and statistic. What is the simplest way to tell them apart?<div class="tag-row"><span class="tag s-tag">S1</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Parameter:</strong> a numerical summary that describes the entire <em>population</em>. It's usually unknown because we rarely measure everyone. Uses Greek letters: <span class="math">μ</span> (mean), <span class="math">σ</span> (standard deviation), <span class="math">p</span> (proportion).</p>
+            <p><strong>Statistic:</strong> a numerical summary that describes the <em>sample</em> — the group we actually measured. Uses Roman letters: <span class="math">x̄</span> (sample mean), <span class="math">s</span> (sample SD), <span class="math">p̂</span> (sample proportion).</p>
+          </div>
+          <div class="tip-box"><b>🧠 Memory anchors — "P and P, S and S":</b><br>
+          <strong>P</strong>arameter describes the <strong>P</strong>opulation.<br>
+          <strong>S</strong>tatistic describes the <strong>S</strong>ample.<br><br>
+          Also: parameters use <em>Greek</em> letters (from ancient <em>Greece</em> — far away, unknown). Statistics use Roman/Latin letters (close, measurable).</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Calling a number from a survey a "parameter" because it sounds more formal. The deciding question is always: <em>Was every member of the population of interest measured?</em> If you only surveyed a subset → it's a statistic, regardless of how large the sample is.</div>
+          <a class="try-app-btn" href="https://sacstatsc1000statisticparameter.netlify.app/" target="_blank" rel="noopener">Try Statistic vs. Parameter — practice identifying which is which</a>
+        </div></div>
+      </div>
+
+      <!-- Q2: Population/Sample key terms -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="population sample sampling frame key terms identify word problem identify elements study">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What key terms should I look for to identify the population, sample, and sampling frame in a word problem?<div class="tag-row"><span class="tag s-tag">S1</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Population:</strong> the complete group the researcher wants to draw conclusions about. Signal phrases: "all adults in…," "every SAC student," "all customers." It's the group you <em>wish</em> you could measure.</p>
+            <p><strong>Sample:</strong> the subset of the population that was actually measured. Signal phrases: "200 students were surveyed," "a random selection of 50 records." It's who you <em>did</em> measure.</p>
+            <p><strong>Sampling frame:</strong> the list or source from which the sample was drawn. It's what you <em>could have</em> selected from — and it might not perfectly match the population. Example: using a phone directory as the frame to study "all city residents" excludes people without listed numbers.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Three-question triage:</b> (1) Who do we <em>want</em> to know about? → Population. (2) Who did we <em>actually</em> measure? → Sample. (3) Where did our subjects come from? → Sampling frame.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Describing the sample too specifically or too broadly. If the study surveyed "people who had their blood tested at Clinic A," the sample is those specific patients — not "blood samples" (the wrong unit) and not "all adults" (too broad). Match the unit of observation precisely.</div>
+        </div></div>
+      </div>
+
+      <!-- Q3: Stratified vs Cluster -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="stratified cluster sampling difference mnemonic tell apart strata distinguish real life when">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What is the difference between stratified and cluster sampling — is there a mnemonic to keep them straight?<div class="tag-row"><span class="tag s-tag">S1</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Stratified sampling:</strong> Divide the population into groups (strata) based on a shared characteristic (e.g., class year). Then randomly select <em>some members from each group</em>. Every stratum is represented.</p>
+            <p><strong>Cluster sampling:</strong> Divide the population into groups (clusters), usually based on geography or convenience (e.g., classrooms). Then randomly select <em>entire groups</em> and survey everyone in those selected groups. Only some clusters are included.</p>
+          </div>
+          <table class="decision-table">
+            <caption>Side-by-side comparison</caption>
+            <thead><tr><th>Feature</th><th>Stratified</th><th>Cluster</th></tr></thead>
+            <tbody>
+              <tr><td>Groups defined by</td><td>A shared characteristic (age, major, income)</td><td>Geography or convenience (classrooms, zip codes)</td></tr>
+              <tr><td>Who gets selected?</td><td>Some from every group</td><td>All from a few selected groups</td></tr>
+              <tr><td>Goal</td><td>Ensure every subgroup is represented</td><td>Reduce cost and travel; sample entire clusters</td></tr>
+              <tr><td>Example</td><td>Survey 50 freshmen, 50 sophomores, 50 juniors</td><td>Randomly pick 6 classrooms; survey every student in those rooms</td></tr>
+            </tbody>
+          </table>
+          <div class="tip-box"><b>🧠 Mnemonic:</b> <strong>S</strong>tratified = <strong>S</strong>prinkle (pick a few from each group). <strong>C</strong>luster = <strong>C</strong>ollect (grab entire groups). Or: strata are like <em>layers of a cake</em> — you get a slice from every layer. Clusters are like <em>scooping a few whole cakes</em> out of a bakery.</div>
+        </div></div>
+      </div>
+
+      <!-- Q4: Categorical vs Quantitative -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="categorical quantitative variable identify word problem zip code phone number numeric trap classify">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I quickly tell whether a variable is categorical or quantitative from a word problem?<div class="tag-row"><span class="tag s-tag">S2</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Ask this one question: <strong>"Would the average of this variable make meaningful sense?"</strong></p>
+            <p><strong>Quantitative:</strong> Numbers where arithmetic is meaningful — weight, height, time, score, temperature, income. "Average height = 5'7"" makes sense.</p>
+            <p><strong>Categorical:</strong> Labels, groups, or categories — even when they look like numbers. Zip code, phone number, jersey number, student ID, gender, major, yes/no responses. "Average zip code = 92705.3" is meaningless.</p>
+          </div>
+          <div class="tip-box"><b>🧠 The average test:</b> "Would the average of this variable mean anything?" If yes → quantitative. If no → categorical. A zip code average is nonsensical → categorical. An exam score average is meaningful → quantitative.</div>
+          <div class="mistake-box"><b>⚠️ The numeric trap:</b> Not all numbers are quantitative. Zip codes, phone numbers, jersey numbers, social security numbers, and student IDs are all categorical — they are labels disguised as numbers. The test is meaningfulness of arithmetic, not whether digits are involved.</div>
+        </div></div>
+      </div>
+
+      <!-- Q5: Explanatory vs Response -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="explanatory response variable identify which is which predictor outcome word problem">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I identify the explanatory and response variables from a word problem?<div class="tag-row"><span class="tag s-tag">S2</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Explanatory variable (X):</strong> the variable the researcher believes may explain or predict the other. It's the potential cause, the input, the predictor. Look for: what the researcher is manipulating, controlling, or using as the "because" variable.</p>
+            <p><strong>Response variable (Y):</strong> the outcome being measured — what we think might change or be predicted. Look for: what the researcher is trying to understand, measure, or predict.</p>
+            <p>Signal phrasing: "Does [X] affect [Y]?" → X is explanatory, Y is response. "Is [Y] related to [X]?" → same logic. "Researchers studied whether [X] leads to [Y]" → X is explanatory.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Ask the question:</b> "What is the researcher trying to predict or explain?" That's the response variable. "What are they using to predict it?" That's the explanatory variable. The response variable is always what you're trying to understand.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Assuming explanatory = cause and response = effect. In observational studies, explanatory and response labels reflect the structure of the research question, not proven causation. Two variables can be labeled explanatory/response without any causal relationship established.</div>
+        </div></div>
+      </div>
+
+      <!-- Q6: Lurking variables -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="lurking variable confounding hidden factor identify recognize observational study">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I recognize a lurking variable in a study? It always feels hidden by design.<div class="tag-row"><span class="tag s-tag">S2</span><span class="tag s-tag">S3</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>A lurking (confounding) variable is something not included in the study that is related to <em>both</em> the explanatory and response variables — making it look like X causes Y when something else is really driving both.</p>
+            <p>To spot one, ask: <strong>"Is there a third factor that could cause both X and Y to move together?"</strong></p>
+            <p>Classic example: ice cream sales and drowning rates both go up in summer. But ice cream doesn't cause drowning — <em>hot weather</em> is the lurking variable driving both. Removing hot weather would break the apparent connection.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Quick checklist:</b> (1) What else is going on in the context? (2) What lifestyle or environmental factor might connect these two variables? (3) If this third factor were removed, would the relationship disappear? If yes — that's your lurking variable.</div>
+          <div class="info-box"><b>Why lurking variables matter:</b> They are why we can't claim causation from observational studies. Even a strong correlation could be entirely explained by a lurking variable. Only random assignment — which distributes lurking variables equally across groups — controls for them.</div>
+        </div></div>
+      </div>
+
+      <!-- Q7: Observational vs Experiment — causation -->
+      <div class="faq-item faq-card" data-cat="study" data-keywords="observational study experiment cause effect random assignment why cant claim causation correlation">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">Why can't I claim cause and effect even when two variables are strongly correlated in an observational study?<div class="tag-row"><span class="tag s-tag">S3</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>In an observational study, the researcher only watches — they do not assign participants to treatments. This means that any lurking variable could be responsible for the relationship you observe. You cannot rule out alternative explanations.</p>
+            <p>In a well-designed <strong>experiment with random assignment</strong>, participants are randomly placed into treatment and control groups. Random assignment distributes lurking variables roughly equally across groups, so if a difference is observed, the treatment is the most likely explanation.</p>
+            <p>The distinction: <strong>Observational</strong> = observe without intervening → can establish association only. <strong>Experiment with random assignment</strong> = assign treatments → can establish causation.</p>
+          </div>
+          <div class="rule-box"><b>The gold standard:</b> Causation requires a well-designed randomized controlled experiment. No observational study — however large, however strong the correlation — can establish causation alone.</div>
+          <div class="tip-box"><b>🧠 Quick ID:</b> Did the researcher randomly <em>assign</em> subjects to groups? Yes → experiment → causation possible. Did the researcher only observe and record? No assignment → observational → association only.</div>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2: GRAPHS & DISPLAYS
+  ═══════════════════════════════════════ -->
+  <section class="section-group" data-cat="graphs">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f5f3;">📊</div>
+      <h2 class="section-title">Graphs &amp; Displays</h2>
+      <span class="section-count">S4 · S5 · 5 questions</span>
+    </div>
+    <div class="faq-list">
+
+      <!-- Q8: Relative vs Cumulative Frequency -->
+      <div class="faq-item faq-card" data-cat="graphs" data-keywords="relative frequency cumulative relative frequency difference distinguish names similar confusing running total">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What is the difference between relative frequency and cumulative relative frequency — and how do I keep them straight?<div class="tag-row"><span class="tag s-tag">S4</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Relative frequency:</strong> the proportion (or percentage) of the total that falls in <em>this one category</em>. Computed as: count for this category ÷ total count. Each row gets its own proportion.</p>
+            <p><strong>Cumulative relative frequency:</strong> the running total — the proportion of data that falls in this category <em>or any category before it</em>. You add up relative frequencies as you move down the table. The last row always equals 1.0 (100%).</p>
+            <p>Think of cumulative as "how much has been accounted for so far."</p>
+          </div>
+          <div class="tip-box"><b>🧠 The word "cumulative" means "building up."</b> Regular relative frequency = this slice of the pie. Cumulative = this slice + everything before it. The cumulative column at the last row must always equal 1.0 — if it doesn't, something went wrong in your arithmetic.</div>
+          <div class="info-box"><b>Example:</b> In a table of exam grades: Grade A = 12 students (RF = 0.30), Grade B = 18 students (RF = 0.45), Grade C = 10 students (RF = 0.25). Cumulative RF for Grade B = 0.30 + 0.45 = 0.75 → "75% of students earned a B or better."</div>
+          <a class="try-app-btn" href="https://frequencydistributionexplorer.netlify.app/" target="_blank" rel="noopener">Try the Frequency Explorer — watch relative and cumulative frequencies update live</a>
+        </div></div>
+      </div>
+
+      <!-- Q9: Relative frequency vs raw counts -->
+      <div class="faq-item faq-card" data-cat="graphs" data-keywords="relative frequency raw counts when use which compare groups different sizes vegetarians nonvegetarians proportion">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">When should I use relative frequencies instead of raw counts to compare groups?<div class="tag-row"><span class="tag s-tag">S4</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Use relative frequencies whenever you are comparing <em>groups of different sizes</em>. Raw counts are misleading in those situations because a larger group will automatically produce larger counts even if the proportions are identical.</p>
+            <p>Example: You survey 30 vegetarians and 200 nonvegetarians about health outcomes. Finding that 25 nonvegetarians reported headaches vs. 5 vegetarians is not a fair comparison — the groups are completely different sizes. Converting to proportions (25/200 = 12.5% vs. 5/30 = 16.7%) tells a much more accurate story: vegetarians actually had a slightly higher headache rate.</p>
+          </div>
+          <div class="rule-box"><b>Simple rule:</b> Same-sized groups → raw counts are fine. Different-sized groups → always use relative frequencies (proportions or percentages) for fair comparison.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Looking at a stacked bar chart and concluding "Group A has more of X" based on the visual height of a bar — without checking whether Group A is also larger overall. Always ask: "Are these groups the same size?"</div>
+        </div></div>
+      </div>
+
+      <!-- Q10: Histogram vs Boxplot vs Dotplot -->
+      <div class="faq-item faq-card" data-cat="graphs" data-keywords="histogram boxplot dotplot difference when use which best show differences major comparing shape data">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What are the major differences between histograms, dotplots, and boxplots — and when is each one best?<div class="tag-row"><span class="tag s-tag">S5</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <table class="decision-table">
+            <caption>Choosing the right quantitative graph</caption>
+            <thead><tr><th>Graph</th><th>What it shows well</th><th>What it hides</th><th>Best used when…</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Histogram</strong></td><td>Overall shape (skewed/symmetric), modality, where most data clusters</td><td>Individual values; exact counts within bins</td><td>Large datasets; seeing the overall distribution pattern</td></tr>
+              <tr><td><strong>Dotplot</strong></td><td>Every individual data value; gaps, clusters, and unusual values</td><td>Overall shape in large datasets (gets cluttered)</td><td>Small datasets; identifying specific values and spread</td></tr>
+              <tr><td><strong>Boxplot</strong></td><td>5-number summary, IQR, outliers, median; side-by-side comparison</td><td>Modality (can't see if bimodal); individual values</td><td>Comparing multiple groups side by side</td></tr>
+            </tbody>
+          </table>
+          <div class="tip-box"><b>🧠 Key insight about boxplots:</b> A boxplot can't show you whether a distribution is bimodal — two very different distributions can produce identical boxplots. When you need to see the full shape, use a histogram or dotplot instead.</div>
+          <a class="try-app-btn" href="https://exploratorystatisticsactivity.netlify.app/" target="_blank" rel="noopener">Try Exploratory Statistics Activity — compare all three graph types on real data</a>
+        </div></div>
+      </div>
+
+      <!-- Q11: Shape description -->
+      <div class="faq-item faq-card" data-cat="graphs" data-keywords="shape distribution describe unusual features skewed symmetric outliers modality bimodal uniform gaps clusters">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">When describing the shape of a distribution, what should I look for beyond just "skewed" or "symmetric"?<div class="tag-row"><span class="tag s-tag">S5</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>A complete shape description covers four things: <strong>direction, modality, spread, and unusual features</strong>.</p>
+            <p><strong>Direction / symmetry:</strong> Symmetric, left-skewed (long tail toward low values), right-skewed (long tail toward high values).</p>
+            <p><strong>Modality:</strong> Unimodal (one peak), bimodal (two peaks — possible evidence of two subgroups in the data), multimodal, uniform (flat, no clear peak).</p>
+            <p><strong>Unusual features:</strong> Outliers (values far from the bulk), gaps (regions with no data), clusters (multiple concentrated groups).</p>
+          </div>
+          <div class="tip-box"><b>🧠 SOCS — a complete description framework:</b><br>
+          <strong>S</strong>hape (symmetric, skewed left/right, bimodal…)<br>
+          <strong>O</strong>utliers (any extreme values?)<br>
+          <strong>C</strong>enter (mean or median — which is appropriate?)<br>
+          <strong>S</strong>pread (SD or IQR — which is appropriate?)<br>
+          Always describe each in context — not just numbers, but what they mean for the real-world variable.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Writing "the data is skewed" without specifying direction (left or right). The direction is essential — it tells you where the outliers are and whether mean or median is more appropriate. Also: always mention whether outliers or gaps are present, even if they're absent ("no outliers are apparent").</div>
+        </div></div>
+      </div>
+
+      <!-- Q12: Reading percentile from a graph -->
+      <div class="faq-item faq-card" data-cat="graphs" data-keywords="percentile histogram bar graph scatter plot maximum salary 100 percent reading from graph estimate">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I read a percentile directly from a histogram, and why does the maximum value always fall at the 100th percentile?<div class="tag-row"><span class="tag s-tag">S5</span><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>To read a percentile from a histogram, you are asking: <em>"What fraction of the total area is to the LEFT of this value?"</em> That fraction (as a percent) is the percentile.</p>
+            <p>For the <strong>maximum value</strong>: 100% of the data falls <em>at or below</em> the maximum. By definition, no value exceeds it — so the maximum is at the 100th percentile. This is always true, regardless of what the maximum value is.</p>
+            <p>To estimate from a histogram: add up the relative frequency (height × width for each bar) for all bars to the left of your target value. That sum is the approximate percentile.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Percentile = cumulative relative frequency up to that point.</b> The 100th percentile doesn't mean "the best possible score" — it just means every single observation in the dataset is at or below that value. The maximum always earns the 100th percentile by definition.</div>
+          <a class="try-app-btn" href="https://percentileexplorer.netlify.app/" target="_blank" rel="noopener">Try the Percentile Explorer — visually find percentiles across a dataset</a>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3: CENTER, SPREAD & SHAPE
+  ═══════════════════════════════════════ -->
+  <section class="section-group" data-cat="center">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fdf0ec;">📐</div>
+      <h2 class="section-title">Measures of Center, Spread &amp; Shape</h2>
+      <span class="section-count">S6 · 7 questions</span>
+    </div>
+    <div class="faq-list">
+
+      <!-- Q13: Mean vs Median — when to use -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="mean median when use which skewed outliers resistant better measure center choose graph">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I decide whether to use the mean or median to describe the center — and how do I tell which is better just from a graph?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Symmetric distribution, no outliers → use Mean + Standard Deviation.</strong> The mean uses all data values equally and is the most precise summary when the distribution is balanced.</p>
+            <p><strong>Skewed distribution OR outliers present → use Median + IQR.</strong> The median is <em>resistant</em> — extreme values can't pull it far from the center of the bulk of the data. The mean is pulled toward the tail; the median stays near the middle.</p>
+          </div>
+          <div class="tip-box"><b>🧠 From the graph:</b> See a long tail? The mean is chasing that tail — use median instead. See outliers? Same logic. See a bell curve shape with no unusual values? Mean and median will be close together — either works, but use mean + SD.</div>
+          <div class="info-box"><b>Why does skewness pull the mean?</b> The mean is computed using every value — a single very large value adds significantly to the sum. The median only cares about position (middle value), not magnitude, so one extreme value can't move it far.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Always reporting the mean because it "feels more official." If a distribution is right-skewed (like incomes or housing prices), the mean will be much higher than the typical value most people experience. In those cases, the median is the more honest description of center.</div>
+          <a class="try-app-btn" href="https://exploratorystatisticsactivity.netlify.app/" target="_blank" rel="noopener">Try Exploratory Statistics Activity — see how mean and median shift with shape</a>
+        </div></div>
+      </div>
+
+      <!-- Q14: SD vs IQR -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="standard deviation IQR difference spread both variance how different resistant resistant calculation">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What is the difference between standard deviation and IQR — aren't they both just measuring "spread"?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Both measure spread, but they do so in fundamentally different ways — and one is far more sensitive to outliers than the other.</p>
+            <p><strong>Standard Deviation (SD):</strong> measures the average distance of <em>all values</em> from the mean. Because it uses every data point, one extreme outlier can significantly inflate the SD. Paired with the mean.</p>
+            <p><strong>IQR (Interquartile Range) = Q3 − Q1:</strong> measures the spread of the <em>middle 50%</em> of the data. It completely ignores the bottom 25% and top 25%, making it <em>resistant</em> to outliers. Paired with the median.</p>
+          </div>
+          <div class="rule-box"><b>The pairing rule:</b> Mean goes with SD. Median goes with IQR. They are paired because both are appropriate for the same conditions (symmetric vs. skewed/outlier-affected distributions). Never mix the pairs.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Reporting the mean (which was inflated by outliers) alongside the IQR (which is resistant). This creates a contradictory summary — one number pretends outliers matter, the other ignores them. Pick the appropriate pair for the shape of your data and stick to it.</div>
+        </div></div>
+      </div>
+
+      <!-- Q15: Skew and mean vs median direction -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="skewed left skewed right mean median direction pull outliers low values does mean always go further left">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">In a skewed distribution, does the mean always get pulled further in the direction of the tail than the median?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>In general, yes — the mean gets pulled toward the tail more than the median. The pattern is:</p>
+            <p><strong>Right-skewed</strong> (long tail toward high values): mean > median. The few very large values inflate the mean upward while the median stays near the bulk of the data.</p>
+            <p><strong>Left-skewed</strong> (long tail toward low values): mean &lt; median. A few very small values drag the mean down while the median holds its position.</p>
+            <p>However, this is a tendency, not an absolute law — the degree depends on how extreme the skew and outliers are. For very mildly skewed distributions, mean and median may be nearly identical.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Shortcut:</b> "The mean chases the tail." In a right-skewed distribution, the tail points right → mean is pulled right → mean > median. In a left-skewed distribution → mean is pulled left → mean &lt; median.</div>
+        </div></div>
+      </div>
+
+      <!-- Q16: Upper and lower fences -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="upper lower fence formula Q1 Q3 IQR outlier detection 1.5 calculation boxplot whisker">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I calculate the upper and lower fences — and what do they actually mean?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>Lower Fence = Q1 − 1.5 × IQR</strong></p>
+            <p><strong>Upper Fence = Q3 + 1.5 × IQR</strong></p>
+            <p>Any data value <em>below</em> the lower fence or <em>above</em> the upper fence is flagged as a <strong>potential outlier</strong>. On a boxplot, the whiskers extend to the most extreme values that are still <em>within</em> the fences — not to the fences themselves.</p>
+            <p>Step-by-step: (1) Find Q1 and Q3. (2) Compute IQR = Q3 − Q1. (3) Multiply IQR × 1.5. (4) Subtract from Q1 for the lower fence; add to Q3 for the upper fence. (5) Any data value outside those bounds is a potential outlier.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Example:</b> Q1 = 20, Q3 = 35, IQR = 15. Lower fence = 20 − 1.5(15) = 20 − 22.5 = −2.5. Upper fence = 35 + 1.5(15) = 35 + 22.5 = 57.5. Any data point below −2.5 or above 57.5 is a potential outlier.</div>
+          <div class="mistake-box"><b>⚠️ Most common calculation error:</b> Multiplying IQR × 1.5 correctly but then adding it to Q1 or subtracting from Q3 (the wrong quartile). Always: lower fence uses Q1 (subtract), upper fence uses Q3 (add). The fences extend <em>outward</em> from the middle 50%.</div>
+        </div></div>
+      </div>
+
+      <!-- Q17: Q1/Q3 position with even n -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="Q1 Q3 quartile even sample size include exclude median split data halves finding quartiles odd even">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">When finding Q1 and Q3, do I include or exclude the median when splitting the data?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p><strong>When n is odd:</strong> the median is the actual middle data value. <em>Exclude</em> it from both halves. Q1 is the median of the lower half; Q3 is the median of the upper half.</p>
+            <p><strong>When n is even:</strong> the median is the average of the two middle values and is not an actual data point in the list. Split the data cleanly in half at the midpoint — no value to exclude. Q1 = median of the lower half; Q3 = median of the upper half.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Example (n = 9, odd):</b> Data: 2 4 5 7 <strong>8</strong> 9 11 14 17. Median = 8 (excluded). Lower half = {2,4,5,7}, Q1 = (4+5)/2 = 4.5. Upper half = {9,11,14,17}, Q3 = (11+14)/2 = 12.5.<br><br><b>Example (n = 8, even):</b> Data: 1 3 5 7 | 9 11 13 15. Lower half = {1,3,5,7}, Q1 = (3+5)/2 = 4. Upper half = {9,11,13,15}, Q3 = (11+13)/2 = 12.</div>
+          <div class="info-box"><b>Non-integer positions:</b> If your position formula gives a decimal (e.g., position = 16.25), round up to the next whole number — use the 17th data value. This is the convention used in this course. Note that some software interpolates between values, which may give slightly different answers than your hand calculation.</div>
+        </div></div>
+      </div>
+
+      <!-- Q18: Percentile meaning -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="percentile meaning 70th percentile interpretation at or below 70 percent sold fewer or equal quartile wording twisty">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What does a percentile actually mean? If the 70th percentile is 6 cars, does that mean 70% sold 6 or fewer?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>The <strong><em>k</em>th percentile</strong> is the value at or below which <em>k</em>% of the data falls.</p>
+            <p>So: if the 70th percentile is 6 cars, then <strong>70% of people sold 6 or fewer cars</strong>. The correct interpretation uses "at or below" — the value itself counts.</p>
+            <p>Similarly: Q1 = 25th percentile means 25% of values are at or below Q1. Q3 = 75th percentile means 75% of values are at or below Q3. The median = 50th percentile means 50% fall at or below the median.</p>
+          </div>
+          <div class="rule-box"><b>The wording that earns full credit:</b> "The 70th percentile of [6 cars] means that approximately 70% of [salespeople] sold [6] or fewer cars." Include the variable, the value, and the population — all three.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Writing "70% scored above" or "70% scored exactly 6." The percentile tells you how much data falls <em>at or below</em> the given value — not above it, and not exactly at it. If 30% is above, that's the complement: 100% − 70%.</div>
+          <a class="try-app-btn" href="https://percentileexplorer.netlify.app/" target="_blank" rel="noopener">Try the Percentile Explorer — visualize the at-or-below interpretation</a>
+        </div></div>
+      </div>
+
+      <!-- Q19: How detailed to be -->
+      <div class="faq-item faq-card" data-cat="center" data-keywords="how detailed describing center variability shape sentence form context just numbers or explain interpret">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">When describing center, spread, and shape, should I just state numbers — or always interpret them in context?<div class="tag-row"><span class="tag s-tag">S6</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Always interpret in context — a number alone is never a complete statistical answer in this course.</p>
+            <p><strong>Center:</strong> "The median exam score is 78 points" → not enough. Better: "The typical student scored 78 points on the exam, meaning half of students scored 78 or below and half scored above."</p>
+            <p><strong>Spread:</strong> "The IQR is 14 points" → not enough. Better: "The middle 50% of exam scores spanned a range of 14 points, indicating moderate variability among typical students."</p>
+            <p><strong>Shape:</strong> "The distribution is right-skewed" → not enough. Better: "The distribution is right-skewed, suggesting that most students scored in the 60–80 range, but a few students scored exceptionally high, pulling the mean above the median."</p>
+          </div>
+          <div class="tip-box"><b>🧠 Every numerical result needs three things:</b> (1) The number with units. (2) What it measures. (3) What it means for the real-world variable and population. If any of those is missing, your answer is incomplete.</div>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4: Z-SCORES
+  ═══════════════════════════════════════ -->
+  <section class="section-group" data-cat="zscore">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">🎯</div>
+      <h2 class="section-title">Z-Scores</h2>
+      <span class="section-count">S7 · 5 questions</span>
+    </div>
+    <div class="faq-list">
+
+      <!-- Q20: Z-score formula explained -->
+      <div class="faq-item faq-card" data-cat="zscore" data-keywords="z score formula what does each part mean x mu sigma standard deviations from mean calculate">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">What does each part of the z-score formula mean — and how do I read what it's telling me?<div class="tag-row"><span class="tag s-tag">S7</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>The z-score formula: <span class="math">z = (x − μ) / σ</span></p>
+            <p><strong>x</strong> — the individual data value you are standardizing</p>
+            <p><strong>μ</strong> (mu) — the population mean (or sample mean <span class="math">x̄</span> if the population mean is unknown)</p>
+            <p><strong>σ</strong> (sigma) — the population standard deviation (or sample SD <span class="math">s</span>)</p>
+            <p><strong>x − μ</strong> — the distance between your value and the mean (positive if above, negative if below)</p>
+            <p><strong>÷ σ</strong> — converts that raw distance into a number of standard deviations</p>
+            <p>The result: how many standard deviations is <span class="math">x</span> above (positive) or below (negative) the mean?</p>
+          </div>
+          <div class="tip-box"><b>🧠 What z-scores do:</b> They put values from completely different distributions onto the same common scale. A z-score of +2 means "two standard deviations above average" — whether you're measuring heights, scores, or temperatures. That's what makes z-scores so powerful for comparison.</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Plugging the standard deviation into the numerator or the mean into the denominator. Always: <em>value minus mean</em> on top; <em>standard deviation</em> on the bottom.</div>
+          <a class="try-app-btn" href="https://zscoreexplorer.netlify.app/" target="_blank" rel="noopener">Try the Z-Score Explorer — visualize what the formula produces in real time</a>
+        </div></div>
+      </div>
+
+      <!-- Q21: Negative z-score -->
+      <div class="faq-item faq-card" data-cat="zscore" data-keywords="negative z score bad mean below average negative positive direction sign deviation">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">Does a negative z-score mean something is "bad" or "wrong"?<div class="tag-row"><span class="tag s-tag">S7</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>No — a negative z-score simply means the data value is <em>below the mean</em>. The sign tells you direction; it carries no value judgment on its own.</p>
+            <p><strong>Positive z:</strong> the value is above the mean.</p>
+            <p><strong>Negative z:</strong> the value is below the mean.</p>
+            <p><strong>z = 0:</strong> the value equals the mean exactly.</p>
+            <p>Whether "below the mean" is good or bad depends entirely on context. A negative z-score for resting heart rate is a good thing (lower heart rate = better cardiovascular health). A negative z-score for exam scores might feel bad — but it's still just a position, not a verdict.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Template sentence:</b> "A z-score of −1.8 means this value is 1.8 standard deviations below the mean." That's all it means — direction and distance. Nothing more.</div>
+        </div></div>
+      </div>
+
+      <!-- Q22: When is a z-score unusual -->
+      <div class="faq-item faq-card" data-cat="zscore" data-keywords="unusual z score rule when extreme typical absolute value 2 threshold formula decide">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I decide whether a z-score is "unusual" — and how should I justify it in writing?<div class="tag-row"><span class="tag s-tag">S7</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>In this course, the rule is: a z-score is considered <strong>unusual</strong> if |z| &gt; 2 — that is, the value is more than 2 standard deviations from the mean in either direction.</p>
+            <p><strong>|z| &lt; 2</strong> → Not unusual (typical range for most data in a roughly normal distribution)</p>
+            <p><strong>|z| ≥ 2</strong> → Unusual (in the outer ~5% of the distribution)</p>
+            <p><strong>|z| ≥ 3</strong> → Very unusual / likely an outlier</p>
+          </div>
+          <div class="rule-box"><b>Justification sentence template:</b> "A z-score of [z] is [unusual / not unusual] because it is [more than / less than] 2 standard deviations [above / below] the mean. Values this extreme occur in approximately [5% / 0.3%] of a normal distribution."</div>
+          <div class="tip-box"><b>🧠 Why 2?</b> In a normal distribution, about 95% of values fall within 2 standard deviations of the mean. So only about 5% of values — roughly 1 in 20 — have |z| &gt; 2. That's rare enough to call "unusual."</div>
+          <div class="mistake-box"><b>⚠️ Common mistake:</b> Writing "z = 1.9 is unusual" because it's close to 2. The threshold is |z| &gt; 2. A z-score of 1.9 is "not unusual" — it barely falls within the typical range. Precision matters on the exam.</div>
+        </div></div>
+      </div>
+
+      <!-- Q23: Find x from z-score -->
+      <div class="faq-item faq-card" data-cat="zscore" data-keywords="find original data value x from z score mu sigma rearrange formula positive negative above below mean back-calculate">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I find the original data value when I'm given a z-score, mean, and standard deviation?<div class="tag-row"><span class="tag s-tag">S7</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Rearrange the z-score formula to solve for x:</p>
+            <p style="background:var(--parchment);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.7rem 0.9rem;font-family:'Playfair Display',serif;font-style:italic;text-align:center;">x = μ + z · σ</p>
+            <p>Plug in the z-score, mean (μ), and standard deviation (σ) and compute.</p>
+            <p><strong>Built-in sanity check:</strong> positive z → x must be <em>above</em> the mean (x &gt; μ). Negative z → x must be <em>below</em> the mean (x &lt; μ). If your answer violates this, recheck your arithmetic.</p>
+          </div>
+          <div class="tip-box"><b>🧠 Example:</b> Mean = 70, SD = 8, z = −1.5. x = 70 + (−1.5)(8) = 70 − 12 = 58. Check: 58 &lt; 70 ✓ (negative z means below the mean — correct).</div>
+          <div class="mistake-box"><b>⚠️ Common mistakes:</b> (1) Subtracting z·σ from the mean when z is already negative — double-negating. Just compute z·σ as signed: (−1.5)(8) = −12, then add to μ: 70 + (−12) = 58. (2) Forgetting to multiply by σ — the formula is z<em>·σ</em>, not just z. Always include σ.</div>
+        </div></div>
+      </div>
+
+      <!-- Q24: Z-scores to compare across populations -->
+      <div class="faq-item faq-card" data-cat="zscore" data-keywords="compare z scores different populations distributions common scale relatively larger which value better context sentence explain">
+        <button class="faq-trigger" onclick="toggleFAQ(this)" aria-keywords="false">
+          <span class="q-icon" aria-hidden="true">Q</span>
+          <span class="faq-q">How do I use z-scores to compare values from two completely different populations — and how do I explain it in words?<div class="tag-row"><span class="tag s-tag">S7</span></div></span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p class="answer-head">The answer</p>
+          <div class="answer-text">
+            <p>Raw values can't be compared across different distributions — a score of 85 on one exam and a score of 85 on another might represent very different relative performances if the exams had different means and spreads.</p>
+            <p>Z-scores fix this by converting everything to a <em>common scale</em>: standard deviations from the mean. To compare:</p>
+            <p><strong>1.</strong> Calculate the z-score for each value using its own distribution's mean and SD.<br>
+            <strong>2.</strong> Compare the z-scores — the <em>higher</em> z-score represents the more impressive performance relative to its distribution.<br>
+            <strong>3.</strong> Explain in words: "Although [Person A] had a lower raw score, their z-score of [z₁] is higher than [Person B]'s z-score of [z₂], meaning [Person A] performed better relative to their group."</p>
+          </div>
+          <div class="tip-box"><b>🧠 Example:</b> Student A scored 90 on Test 1 (μ=80, σ=5): z = (90−80)/5 = +2.0. Student B scored 95 on Test 2 (μ=75, σ=15): z = (95−75)/15 = +1.33. Student A's z-score is higher → relative to their group, Student A outperformed Student B, even with a lower raw score.</div>
+          <a class="try-app-btn" href="https://zscoreexplorer.netlify.app/" target="_blank" rel="noopener">Try the Z-Score Explorer — compare positions across different distributions</a>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ART OF STAT NAVIGATION ─── -->
+  <section class="artofstat-section">
+    <div class="artofstat-header">
+      <h2>🛠 Art of Stat — Unit 1 Navigation Guide</h2>
+      <p>Menu paths and video walkthroughs for every Unit 1 procedure</p>
+    </div>
+    <p class="artofstat-intro">Go to <a href="https://artofstat.com/web-apps" target="_blank" rel="noopener">artofstat.com/web-apps</a> and navigate to the app listed below. Video walkthroughs are linked on each card.</p>
+    <div class="artofstat-grid">
+
+      <div class="aos-card">
+        <span class="aos-test-badge quant">Quantitative</span>
+        <div class="aos-name">5-Number Summary, Center &amp; Spread</div>
+        <div class="aos-where">Menu: <strong>Exploratory Data Analysis → Explore Quantitative Data</strong></div>
+        <div class="aos-note">⚠️ Enter data in the "Observations" box; check Histogram / Boxplot / Dotplot as needed</div>
+        <a class="aos-video-btn" href="https://youtu.be/Sa38lR-s4vs" target="_blank" rel="noopener">
+          <svg class="aos-video-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          5-number summary
+        </a>
+        <a class="aos-video-btn" href="https://youtu.be/uUNX-V4H9lE" target="_blank" rel="noopener">
+          <svg class="aos-video-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Histogram &amp; boxplot
+        </a>
+      </div>
+
+      <div class="aos-card">
+        <span class="aos-test-badge cat">Categorical</span>
+        <div class="aos-name">Bar Charts &amp; Frequency Tables</div>
+        <div class="aos-where">Menu: <strong>Exploratory Data Analysis → Explore Categorical Data</strong></div>
+        <div class="aos-note">⚠️ Produces bar charts, pie charts, frequency and relative frequency tables</div>
+        <a class="aos-video-btn" href="https://youtu.be/rxkB5eVj6EA" target="_blank" rel="noopener">
+          <svg class="aos-video-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch video
+        </a>
+      </div>
+
+      <div class="aos-card">
+        <span class="aos-test-badge dist">Distributions</span>
+        <div class="aos-name">Z-Scores &amp; Normal Probabilities</div>
+        <div class="aos-where">Menu: <strong>Distributions → Normal Distribution</strong></div>
+        <div class="aos-note">⚠️ Use "Find Probability" tab for z-score → area; "Find Percentile/Quartile" tab for area → z-score</div>
+        <a class="aos-video-btn" href="https://youtu.be/uxIg6_TSWCY" target="_blank" rel="noopener">
+          <svg class="aos-video-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Find probability
+        </a>
+        <a class="aos-video-btn" href="https://youtu.be/uxIg6_TSWCY?t=125" target="_blank" rel="noopener">
+          <svg class="aos-video-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Find percentile
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="noResults" role="alert" style="text-align:center;padding:3rem 1rem;display:none;">
+    <p style="font-size:2rem;margin-bottom:0.5rem;">🔍</p>
+    <p style="font-size:15px;color:var(--muted);">No questions matched <strong id="searchTerm" style="color:var(--navy);"></strong>.</p>
+    <p style="margin-top:0.4rem;font-size:14px;color:var(--muted);">Try a different keyword, or clear the search to browse all topics.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>STAT C1000 · Santa Ana College · Unit 1 Student FAQ</strong></p>
+    <p style="margin-top:6px;">SAC Hope Academy · Dr. Romero · Questions collected from your classmates and organized with care.</p>
+    <p style="margin-top:6px;font-style:italic;">"Hope is not a passive wish — it is an active choice." — C.R. Snyder</p>
+  </div>
+</footer>
+
+<script>
+/* ── DECISION TREE ── */
+var treeHistory = [];
+var currentOpts = [];
+
+var tree = {
+  start: {
+    q: "What type of data are you working with?",
+    ctx: "This determines which graphs and summaries are appropriate.",
+    opts: [
+      { label: "Categorical", sub: "Groups, labels, names, yes/no, colors, majors", next: "result_cat" },
+      { label: "Quantitative", sub: "Measured numbers: weight, score, time, income, height", next: "quant_shape" }
+    ]
+  },
+  quant_shape: {
+    q: "What does the distribution look like?",
+    ctx: "Look at a dotplot or histogram first, or consider the nature of the variable.",
+    opts: [
+      { label: "Roughly symmetric — no extreme outliers", sub: "Bell-shaped, balanced, no long tails", next: "result_symmetric" },
+      { label: "Clearly skewed OR obvious outliers present", sub: "Long tail on one side, or extreme values far from the bulk", next: "result_skewed" }
+    ]
+  }
+};
+
+var results = {
+  result_cat: {
+    name: "Categorical Data Summary",
+    sym: "Bar chart or pie chart + Frequency & Relative Frequency Table",
+    hyp: "Report: the mode (most common category), counts, and relative frequencies (proportions or %). When comparing groups of different sizes, always use relative frequencies — not raw counts.",
+    art: "https://artofstat.com/web-apps",
+    vid: "https://youtu.be/rxkB5eVj6EA"
+  },
+  result_symmetric: {
+    name: "Symmetric Quantitative Data",
+    sym: "Mean (x̄) + Standard Deviation (s) + Histogram or Dotplot",
+    hyp: "Report: mean and standard deviation. The mean uses all values and is the best measure of center when the distribution is balanced with no extreme outliers.",
+    art: "https://artofstat.com/web-apps",
+    vid: "https://youtu.be/Sa38lR-s4vs"
+  },
+  result_skewed: {
+    name: "Skewed / Outlier-Affected Data",
+    sym: "Median + IQR + Boxplot (also shows outliers)",
+    hyp: "Report: median and IQR. Both are resistant — extreme values can't pull them away from the center of the bulk of the data. Use a boxplot to display outliers visually.",
+    art: "https://artofstat.com/web-apps",
+    vid: "https://youtu.be/uUNX-V4H9lE"
+  }
+};
+
+function renderTree(nodeId) {
+  document.getElementById('breadcrumb').innerHTML =
+    treeHistory.map(function(h){ return '<span class="crumb">'+h+'</span>'; }).join('');
+
+  if (results[nodeId]) {
+    var r = results[nodeId];
+    document.getElementById('treeContent').innerHTML =
+      '<div class="tree-result">' +
+        '<div class="result-label">✓ Recommended summary</div>' +
+        '<div class="result-name">' + r.name + '</div>' +
+        '<div class="result-symbol">' + r.sym + '</div>' +
+        '<div class="result-hyp">' + r.hyp + '</div>' +
+        '<div class="result-actions">' +
+          '<a class="result-btn primary" href="' + r.art + '" target="_blank" rel="noopener">Open Art of Stat ↗</a>' +
+          (r.vid ? '<a class="result-btn secondary" href="' + r.vid + '" target="_blank" rel="noopener">▶ Watch video</a>' : '') +
+          '<button class="result-btn secondary" onclick="startTree()">↺ Start over</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="tree-restart"><span class="tree-step-indicator">Reached in ' + treeHistory.length + ' step' + (treeHistory.length!==1?'s':'') + '</span></div>';
+    return;
+  }
+
+  var node = tree[nodeId];
+  if (!node) return;
+  currentOpts = node.opts;
+
+  var optsHtml = node.opts.map(function(o, i){
+    return '<button class="tree-option" onclick="chooseOption(' + i + ')">' +
+      '<span class="tree-option-label">' + o.label + '</span>' +
+      '<span class="tree-option-sub">' + o.sub + '</span>' +
+    '</button>';
+  }).join('');
+
+  document.getElementById('treeContent').innerHTML =
+    '<div class="tree-question">' + node.q + '</div>' +
+    '<div class="tree-context">' + node.ctx + '</div>' +
+    '<div class="tree-options">' + optsHtml + '</div>' +
+    (treeHistory.length > 0
+      ? '<div class="tree-restart"><button class="restart-btn" onclick="startTree()">↺ Start over</button>' +
+        '<span class="tree-step-indicator">Step ' + (treeHistory.length + 1) + '</span></div>'
+      : '');
+}
+
+function chooseOption(i) {
+  var o = currentOpts[i];
+  treeHistory.push(o.label.length > 50 ? o.label.substring(0, 47) + '…' : o.label);
+  renderTree(o.next);
+}
+
+function startTree() { treeHistory = []; currentOpts = []; renderTree('start'); }
+startTree();
+
+/* ── FAQ ACCORDION ── */
+function toggleFAQ(btn) {
+  var card = btn.parentElement;
+  var body = card.querySelector('.faq-body');
+  var open = card.classList.contains('open');
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+  if (open) { card.classList.remove('open'); body.style.maxHeight = '0'; }
+  else { card.classList.add('open'); body.style.maxHeight = (body.scrollHeight + 300) + 'px'; }
+}
+
+/* ── FILTER + SEARCH ── */
+var activeFilter = 'all';
+function filterCat(btn, cat) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyFilters();
+}
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+function applyFilters() {
+  var term = document.getElementById('searchInput').value.toLowerCase().trim();
+  var visible = 0;
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var catMatch = (activeFilter === 'all') || (item.getAttribute('data-cat') === activeFilter);
+    var kw = (item.getAttribute('data-keywords') || '') + ' ' + (item.textContent || '');
+    var searchMatch = !term || kw.toLowerCase().includes(term);
+    if (catMatch && searchMatch) { item.classList.remove('hidden'); visible++; }
+    else {
+      item.classList.add('hidden');
+      var b = item.querySelector('.faq-body');
+      if (b) { item.classList.remove('open'); b.style.maxHeight = '0'; }
+    }
+  });
+  document.querySelectorAll('.section-group').forEach(function(sec) {
+    var catMatch = (activeFilter === 'all') || (sec.getAttribute('data-cat') === activeFilter);
+    var vis = sec.querySelectorAll('.faq-item:not(.hidden)').length;
+    sec.classList.toggle('hidden', !catMatch || vis === 0);
+  });
+  var nr = document.getElementById('noResults');
+  if (visible === 0) { nr.style.display = 'block'; document.getElementById('searchTerm').textContent = '"' + term + '"'; }
+  else { nr.style.display = 'none'; }
+}
+</script>
+</body>
+</html>
